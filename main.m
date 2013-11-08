@@ -21,7 +21,7 @@ points=textscan(FileId,'%f %f',npoints{2},'MultipleDelimsAsOne',2,'Headerlines',
 Y=cell2mat(points);
 hold on;            %# Add subsequent plots to the image
 
-
-
 plot( Y(:,1) , Y(:,2) , 'go' );  %# NOTE: x_p and y_p are switched (see note below)!
 hold off;           %# Any subsequent plotting will overwrite the image!
+
+% create polygon from the pnts: 18,7,3,6,12,19
