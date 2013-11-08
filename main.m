@@ -12,4 +12,16 @@ disp('');
 A = imread('F:\CV_LAB\BioID_0001.pgm', 'pgm');
 showImage(A);
 
-M = importdata('F:\CV_LAB\bioid_0000.pts');
+
+FileId=fopen('F:\CV_LAB\bioid_0001.pts')
+npoints=textscan(FileId,'%s %f',1,'HeaderLines',1)
+
+points=textscan(FileId,'%f %f',npoints{2},'MultipleDelimsAsOne',2,'Headerlines',2);
+% now you have the values you want you can put them in a matrix or any variable
+Y=cell2mat(points);
+hold on;            %# Add subsequent plots to the image
+
+
+
+plot( Y(:,1) , Y(:,2) , 'go' );  %# NOTE: x_p and y_p are switched (see note below)!
+hold off;           %# Any subsequent plotting will overwrite the image!
