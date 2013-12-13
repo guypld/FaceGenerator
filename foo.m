@@ -23,7 +23,7 @@ FACTOR = 1;
 
 II = 192/FACTOR;
 JJ = 168/FACTOR;
-counter = 1;
+counter = 2;
 
 for i = 1:(II-1)
     for j = 1:(JJ-1)
@@ -39,16 +39,16 @@ for i = 1:(II-1)
 end
 
 showImage(Out);
-B = reshape(A(1,:,:),192,168);
-showImage(B);
-B = reshape(A(2,:,:),192,168);
-showImage(B);
-B = reshape(A(3,:,:),192,168);
-showImage(B);
-B = reshape(A(4,:,:),192,168);
-showImage(B);
-B = reshape(A(5,:,:),192,168);
-showImage(B);
+% B = reshape(A(1,:,:),192,168);
+% showImage(B);
+% B = reshape(A(2,:,:),192,168);
+% showImage(B);
+% B = reshape(A(3,:,:),192,168);
+% showImage(B);
+% B = reshape(A(4,:,:),192,168);
+% showImage(B);
+% B = reshape(A(5,:,:),192,168);
+% showImage(B);
 
 
 % baseed on myImg\0.pgm
