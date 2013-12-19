@@ -31,13 +31,15 @@ tmp = reshape(IMAGE_DB(1, :, :),192,168);
 showImage(tmp);
 
 [Tx, Ty] = ginput();
-
+Tx = Tx';
+Ty = Ty';
+save('myPoint\target.mat','Tx','Ty');
 
 for i = 0:19
     tmp = reshape(IMAGE_DB(i+1, :, :),192,168);
     Ox = reshape(POINT_DB(i+1, 1, :),1,16);
     Oy = reshape(POINT_DB(i+1, 2, :),1,16);
-    IMAGE_DB(i+1, :, :) = warpImage(tmp, Ox, Oy, Tx', Ty');
+    IMAGE_DB(i+1, :, :) = warpImage(tmp, Ox, Oy, Tx, Ty);
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%

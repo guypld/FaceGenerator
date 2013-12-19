@@ -1,45 +1,26 @@
 
-% A = imread(['myImg\0.pgm'], 'pgm');
-% [x, y] = ginput();
-% 
-% Ox = x'
-% Oy = y'
-for x = 1:6
-    RANDOM = (int8(rand([1,5]) * 19) + 1)
-    out1 = randomImage2(IMAGE_DB, 5, RANDOM, 10, 10, 60, 60); 
-    out2 = randomImage2(IMAGE_DB, 5, RANDOM, 10, 100, 60, 160);
-    RANDOM = (int8(rand([1,5]) * 19) + 1)
-    out3 = randomImage2(IMAGE_DB, 5, RANDOM, 50, 55, 120, 110); 
-    RANDOM = (int8(rand([1,5]) * 19) + 1)
-    out4 = randomImage2(IMAGE_DB, 5, RANDOM, 135, 35, 165, 125); 
+load('myPoint\target.mat','Tx','Ty');
 
-    final = zeros(192, 168);
+% MMax_x = max(Tx(1:5));
+% MMax_y = max(Ty(1:5));
+% MMin_x = min(Tx(1:5));
+% MMin_y = min(Ty(1:5));
 
-    for i = 1:192
-        for j = 1:168
-            if out1(i, j) > 0
-                final(i,j) = out1(i,j);
-            end
-            if out2(i, j) > 0
-                final(i,j) = out2(i,j);
-            end
-            if out3(i, j) > 0
-                final(i,j) = out3(i,j);
-            end
-            if out4(i, j) > 0
-                final(i,j) = out4(i,j);
-            end
-        end
-    end
-    
-    for i = 1:192
-        for j = 1:168
-            if final(i, j) <= 0
-                final(i,j) = IMAGE_DB(1, i, j);
-            end
-        end
-    end
-    showImage(final);
-end
+ELMax_x = max(Tx(6:9));
+ELMax_y = max(Ty(6:9));
+ELMin_x = min(Tx(6:9));
+ELMin_y = min(Ty(6:9));
 
-    
+% ERMax_x = max(Tx(10:13));
+% ERMax_y = max(Ty(10:13));
+% ERMin_x = min(Tx(10:13));
+% ERMin_y = min(Ty(10:13));
+
+% NMax_x = max(Tx(14:16));
+% NMax_y = max(Ty(14:16));
+% NMin_x = min(Tx(14:16));
+% NMin_y = min(Ty(14:16));
+
+new_db = randomSubImage( IMAGE_DB, 5, 5, [ELMax_y, ELMax_x], [ELMin_y, ELMin_x]);
+
+break;

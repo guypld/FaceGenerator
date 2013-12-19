@@ -31,5 +31,5 @@ for i = x1:x2
     end
 end
 
-% showImage(Out);
+showImage(Out);
 
