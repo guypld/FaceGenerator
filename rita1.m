@@ -6,29 +6,31 @@
 % function big_image_list = foo(images_vec, points_vec, weight_vec, target)
 
 IMAGE_DB = zeros(20, 192, 168);
-POINT_DB = zeros(20, 2, 16);   % 16 point number
+% POINT_DB = zeros(20, 2, 16);   % 16 point number
+POINT_DB = zeros(20, 2, 71);   % 71 point number
 
 % create DB
-for i = 0:19
+for i = 0:4%19
     disp(['myImg\' num2str(i) '.pgm']);
     A = imread(['myImg\' num2str(i) '.pgm'], 'pgm');
     IMAGE_DB(i+1, :, :) = A;
     
-    load(['myPoint\' num2str(i) '.mat'],'Ox','Oy');
+%     load(['myPoint\' num2str(i) '.mat'],'Ox','Oy');
+    load(['newPoints\' num2str(i) '.mat'],'Ox','Oy');
 
-    POINT_DB(i+1, 1, :) = Ox;
-    POINT_DB(i+1, 2, :) = Oy;
+    POINT_DB(i+1, 1, :) = Ox';
+    POINT_DB(i+1, 2, :) = Oy';
 end
 
 % wrap images
 
-Tx = reshape(POINT_DB(1, 1, :),1,16);
-Ty = reshape(POINT_DB(1, 2, :),1,16);
+Tx = reshape(POINT_DB(1, 1, :),1,71);
+Ty = reshape(POINT_DB(1, 2, :),1,71);
 
-for i = 0:19
+for i = 0:4
     tmp = reshape(IMAGE_DB(i+1, :, :),192,168);
-    Ox = reshape(POINT_DB(i+1, 1, :),1,16);
-    Oy = reshape(POINT_DB(i+1, 2, :),1,16);
+    Ox = reshape(POINT_DB(i+1, 1, :),1,71);
+    Oy = reshape(POINT_DB(i+1, 2, :),1,71);
     IMAGE_DB(i+1, :, :) = warpImage(tmp, Ox, Oy, Tx, Ty);
 end
 
