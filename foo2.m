@@ -29,11 +29,11 @@ eye_right_db = randomSubImage( IMAGE_DB, 5, 5, [ERMax_y, ERMax_x], [ERMin_y, ERM
 
 [x,y,z] = size(eye_left_db);
 
-for i = 1:2
+for i = 1:26
     showImage(reshape(eye_left_db(i, :, :), 192, 168));
 end
 
-for i = 1:2
+for i = 1:26
     showImage(reshape(eye_right_db(i, :, :), 192, 168));
 end
 
