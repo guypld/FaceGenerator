@@ -13,9 +13,7 @@ for i = 2:N
     nCk = nchoosek(1:N,i);
     size_nCk = size(nCk);
     for x = 1 : size_nCk(1);
-        nCk(x, :)
-%         tmp = randomImage2(imageDb, patchSize, nCk(x, :), p1(2), p1(1), p2(2), p2(1)); 
-%         tmp = randomImage(imageDb, patchSize, nCk(x, :)); 
+%         nCk(x, :)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         Out = -1 * ones(192,168);
         for ii = p2(1) : p1(1)
