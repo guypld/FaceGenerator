@@ -19,15 +19,37 @@ myPickSize = size(myPick)
 %     cheaks = 2;
 % end
     
-for i = 1:7
-    RANDOM = (int8(rand([1,4]) * 25) + 1);
-    eyes = RANDOM(1);
-    mouth = RANDOM(2);
-    nose = RANDOM(3);
-    cheaks = RANDOM(4);
-    out = randomFullImage(eye_left_db, eye_right_db, mouth_db, nose_db, left_db, right_db, eyes, mouth, nose, cheaks);
-    showImage(out);
-end
+% for i = 1:7
+%     RANDOM = (int8(rand([1,4]) * 25) + 1);
+%     eyes = RANDOM(1);
+%     mouth = RANDOM(2);
+%     nose = RANDOM(3);
+%     cheaks = RANDOM(4);
+%     out = randomFullImage(eye_left_db, eye_right_db, mouth_db, nose_db, left_db, right_db, eyes, mouth, nose, cheaks);
+%     showImage(out);
+% end
+
+RANDOM = (int8(rand([1,4]) * 25) + 1);
+eyes = RANDOM(1);
+mouth = RANDOM(2);
+nose = RANDOM(3);
+cheaks = RANDOM(4);
+out1 = randomFullImage(eye_left_db, eye_right_db, mouth_db, nose_db, left_db, right_db, eyes, mouth, nose, cheaks);
+
+RANDOM = (int8(rand([1,4]) * 25) + 1);
+eyes = RANDOM(1);
+mouth = RANDOM(2);
+nose = RANDOM(3);
+cheaks = RANDOM(4);
+out2 = randomFullImage(eye_left_db, eye_right_db, mouth_db, nose_db, left_db, right_db, eyes, mouth, nose, cheaks);
+
+[mssim, ssim_map] = ssim(out1, out2);
+showImage(out1);
+showImage(out2);
+mssim
+figure
+imshow(max(0, ssim_map).^4);
+
 
 
 
