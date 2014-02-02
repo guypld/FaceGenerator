@@ -5,8 +5,12 @@
 % loop all posibilities and run foo
 % function big_image_list = foo(images_vec, points_vec, weight_vec, target)
 
-IMAGE_DB = zeros(20, 192, 168);
-% POINT_DB = zeros(20, 2, 16);   % 16 point number
+IMAGE_DB1 = zeros(5, 192, 168);
+IMAGE_DB2 = zeros(5, 192, 168);
+IMAGE_DB3 = zeros(5, 192, 168);
+IMAGE_DB4 = zeros(5, 192, 168);
+IMAGE_DB5 = zeros(5, 192, 168);
+
 POINT_DB = zeros(20, 2, 71);   % 71 point number
 
 % create DB
@@ -15,7 +19,6 @@ for i = 0:4%19
     A = imread(['myImg\' num2str(i) '.pgm'], 'pgm');
     IMAGE_DB(i+1, :, :) = A;
     
-%     load(['myPoint\' num2str(i) '.mat'],'Ox','Oy');
     load(['newPoints\' num2str(i) '.mat'],'Ox','Oy');
 
     POINT_DB(i+1, 1, :) = Ox';
@@ -23,55 +26,50 @@ for i = 0:4%19
 end
 
 % wrap images
-
+%%%%%%%%%  1  %%%%%%%%%%%%
 Tx = reshape(POINT_DB(1, 1, :),1,71);
 Ty = reshape(POINT_DB(1, 2, :),1,71);
-
 for i = 0:4
     tmp = reshape(IMAGE_DB(i+1, :, :),192,168);
     Ox = reshape(POINT_DB(i+1, 1, :),1,71);
     Oy = reshape(POINT_DB(i+1, 2, :),1,71);
-    IMAGE_DB(i+1, :, :) = warpImage(tmp, Ox, Oy, Tx, Ty);
+    IMAGE_DB1(i+1, :, :) = warpImage(tmp, Ox, Oy, Tx, Ty);
 end
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% RANDOM = (int8(rand([1,6]) * 20) + 1)
-% 
-% out = randomImage(IMAGE_DB, 20, RANDOM); 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% RANDOM = (int8(rand([1,6]) * 20) + 1)
-% FACTOR = 20;
-% As = size(IMAGE_DB);
-% Out = -1 * ones(As(2),As(3));
-% 
-% for i = 1:As(2)
-%     for j = 1:As(3)
-%         sec1 = (i:(i+FACTOR));
-%         sec2 = (j:(j+FACTOR));
-%         for randPic = RANDOM
-%             for x = i:(i+FACTOR)
-%                 for y = j:(j+FACTOR)
-%                     if ( x > As(2) || y > As(3) )
-%                         break;
-%                     end
-%                     if Out(x,y) > -1
-%                         Out(x,y) = (Out(x,y) + IMAGE_DB(randPic,x,y)) / 2;
-%                     else
-%                         Out(x,y) = IMAGE_DB(randPic,x,y);
-%                     end
-%                 end
-%             end
-%         end
-%     end
-% end
-% 
-% showImage(Out);
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
+%%%%%%%%%  2  %%%%%%%%%%%%
+Tx = reshape(POINT_DB(2, 1, :),1,71);
+Ty = reshape(POINT_DB(2, 2, :),1,71);
+for i = 0:4
+    tmp = reshape(IMAGE_DB(i+1, :, :),192,168);
+    Ox = reshape(POINT_DB(i+1, 1, :),1,71);
+    Oy = reshape(POINT_DB(i+1, 2, :),1,71);
+    IMAGE_DB2(i+1, :, :) = warpImage(tmp, Ox, Oy, Tx, Ty);
+end
+%%%%%%%%%  3  %%%%%%%%%%%%
+Tx = reshape(POINT_DB(3, 1, :),1,71);
+Ty = reshape(POINT_DB(3, 2, :),1,71);
+for i = 0:4
+    tmp = reshape(IMAGE_DB(i+1, :, :),192,168);
+    Ox = reshape(POINT_DB(i+1, 1, :),1,71);
+    Oy = reshape(POINT_DB(i+1, 2, :),1,71);
+    IMAGE_DB3(i+1, :, :) = warpImage(tmp, Ox, Oy, Tx, Ty);
+end
+%%%%%%%%%  4  %%%%%%%%%%%%
+Tx = reshape(POINT_DB(4, 1, :),1,71);
+Ty = reshape(POINT_DB(4, 2, :),1,71);
+for i = 0:4
+    tmp = reshape(IMAGE_DB(i+1, :, :),192,168);
+    Ox = reshape(POINT_DB(i+1, 1, :),1,71);
+    Oy = reshape(POINT_DB(i+1, 2, :),1,71);
+    IMAGE_DB4(i+1, :, :) = warpImage(tmp, Ox, Oy, Tx, Ty);
+end
+%%%%%%%%%  5  %%%%%%%%%%%%
+Tx = reshape(POINT_DB(5, 1, :),1,71);
+Ty = reshape(POINT_DB(5, 2, :),1,71);
+for i = 0:4
+    tmp = reshape(IMAGE_DB(i+1, :, :),192,168);
+    Ox = reshape(POINT_DB(i+1, 1, :),1,71);
+    Oy = reshape(POINT_DB(i+1, 2, :),1,71);
+    IMAGE_DB5(i+1, :, :) = warpImage(tmp, Ox, Oy, Tx, Ty);
+end
 
 
