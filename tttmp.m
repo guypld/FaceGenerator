@@ -1,22 +1,24 @@
 
 images = [ IMAGE_DB1 ; IMAGE_DB2 ; IMAGE_DB3 ; IMAGE_DB4 ; IMAGE_DB5 ];
 
+[imgPerDb, h, w] = size(IMAGE_DB1);
+
 left_eye = 'left_eye';
 right_eye = 'right_eye';
 nose = 'nose';
 mouth = 'mouth';
 
-LEFT_EYES = getAllPossibaleFeatures(images, left_eye, 5, 5);
-D_LEFT_EYES = getDifferentImages(LEFT_EYES, 20);
+[LEFT_EYES, LEFT_EYES_POINTS] = getAllPossibaleFeatures(images, left_eye, imgPerDb, 5);
+[D_LEFT_EYES, D_LEFT_EYES_POINTS] = getDifferentImages(LEFT_EYES, LEFT_EYES_POINTS, 20);
 
-RIGHT_EYES = getAllPossibaleFeatures(images, right_eye, 5, 5);
-D_RIGHT_EYES = getDifferentImages(RIGHT_EYES, 20);
+[RIGHT_EYES, RIGHT_EYES_POINTS] = getAllPossibaleFeatures(images, right_eye, imgPerDb, 5);
+[D_RIGHT_EYES, D_RIGHT_EYES_POINTS] = getDifferentImages(RIGHT_EYES, RIGHT_EYES_POINTS, 20);
 
-NOSES = getAllPossibaleFeatures(images, nose, 5, 5);
-D_NOSES = getDifferentImages(NOSES, 20);
+[NOSES, NOSES_POINTS] = getAllPossibaleFeatures(images, nose, imgPerDb, 5);
+[D_NOSES, D_NOSES_POINTS] = getDifferentImages(NOSES, NOSES_POINTS, 20);
 
-MOUTHS = getAllPossibaleFeatures(images, mouth, 5, 5);
-D_MOUTHS = getDifferentImages(MOUTHS, 20);
+[MOUTHS, MOUTHS_POINTS]= getAllPossibaleFeatures(images, mouth, imgPerDb, 5);
+[D_MOUTHS, D_MOUTHS_POINTS] = getDifferentImages(MOUTHS, MOUTHS_POINTS, 20);
 
 
 
