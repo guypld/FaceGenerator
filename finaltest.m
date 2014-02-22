@@ -3,39 +3,62 @@ warp_index = 1;
 hieght = 192;
 width = 168;
 % function [DB, pDB] = FcreateDb(image_count, h, w, points_count, warp_index)
-% [DB, pDB] = FcreateDb(10, hieght, width, points_count, warp_index);
+[DB1, pDB1] = FcreateDb(10, hieght, width, points_count, warp_index);
+[DB2, pDB2] = FcreateDb(10, hieght, width, points_count, warp_index);
+[DB3, pDB3] = FcreateDb(10, hieght, width, points_count, warp_index);
+[DB4, pDB4] = FcreateDb(10, hieght, width, points_count, warp_index);
+[DB5, pDB5] = FcreateDb(10, hieght, width, points_count, warp_index);
+[DB6, pDB6] = FcreateDb(10, hieght, width, points_count, warp_index);
+[DB7, pDB7] = FcreateDb(10, hieght, width, points_count, warp_index);
+[DB8, pDB8] = FcreateDb(10, hieght, width, points_count, warp_index);
+[DB9, pDB9] = FcreateDb(10, hieght, width, points_count, warp_index);
+[DB10, pDB10] = FcreateDb(10, hieght, width, points_count, warp_index);
+
 
 % function [MASK] = FcreateMask(h, w, left_eye_points, right_eye_points, nose_points, mouth_points, blurFactor)
-x = reshape(pDB(warp_index,1,:), 1, points_count);
-y = reshape(pDB(warp_index,2,:), 1, points_count);
-x1 = [x(1), x(5), x(3), x(6), x(2), x(7), x(4), x(8)];
-y1 = [y(1), y(5), y(3), y(6), y(2), y(7), y(4), y(8)];
-x2 = [x(9), x(13), x(11), x(14), x(10), x(15), x(12), x(16)];
-y2 = [y(9), y(13), y(11), y(14), y(10), y(15), y(12), y(16)];
-x3 = x(17:27);
-y3 = y(17:27);
-x4 = [x(28), x(33), x(39), x(31), x(37), x(35), x(29), x(34), x(36), x(30), x(38), x(32)];
-y4 = [y(28), y(33), y(39), y(31), y(37), y(35), y(29), y(34), y(36), y(30), y(38), y(32)];
-mask = FcreateMask(192, 168, [x1 ; y1], [x2 ; y2], [x3 ; y3], [x4 ; y4], 0.1);
-showImage(mask*255);
-% function [IMAGE] = FgenImage(db, mask, patch, overlap, base, eyes, nose, mouth)
-image = FgenImage(DB, mask, 4, 1, [1,2,3,4], [5,6,7,8], [1], [1]);
-% showImage(image);
+mask1 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
+mask2 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
+mask3 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
+mask4 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
+mask5 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
+mask6 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
+mask7 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
+mask8 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
+mask9 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
+mask10 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
 
-for i = 1:25
-    p = randperm(10);
-    base = p(1:3)
-    p = randperm(10);
-    eyes = p(1:4)
-    p = randperm(10);
-    nose = p(1:5)
-    p = randperm(10);
-    mouth = p(1:3)
-    out = FgenImage(DB, mask, 3, 1, base, eyes, nose, mouth); 
-    out = filter2(fspecial('average',2),out);
-    out = filter2(fspecial('average',2),out);
-    showImage(out);
-end
+% function FmakeIt(db, mask, out_count, b, e, n, m)
+out_count = 3;
+b = 3;
+e = 4;
+n = 5;
+m = 3;
+FmakeIt(DB1, mask1, out_count, b, e, n, m);
+FmakeIt(DB2, mask2, out_count, b, e, n, m);
+FmakeIt(DB3, mask3, out_count, b, e, n, m);
+FmakeIt(DB4, mask4, out_count, b, e, n, m);
+FmakeIt(DB5, mask5, out_count, b, e, n, m);
+FmakeIt(DB6, mask6, out_count, b, e, n, m);
+FmakeIt(DB7, mask7, out_count, b, e, n, m);
+FmakeIt(DB8, mask8, out_count, b, e, n, m);
+FmakeIt(DB9, mask9, out_count, b, e, n, m);
+FmakeIt(DB10, mask10, out_count, b, e, n, m);
+
+
+% for i = 1:25
+%     p = randperm(10);
+%     base = p(1:3)
+%     p = randperm(10);
+%     eyes = p(1:4)
+%     p = randperm(10);
+%     nose = p(1:5)
+%     p = randperm(10);
+%     mouth = p(1:3)
+%     out = FgenImage(DB, mask, 3, 1, base, eyes, nose, mouth); 
+%     out = filter2(fspecial('average',2),out);
+%     out = filter2(fspecial('average',2),out);
+%     showImage(out);
+% end
 
 
 

@@ -19,7 +19,6 @@ Ty = reshape(pDB(warp_index, 2, :),1,points_count);
 for i = 0 : (image_count-1)
     disp(['Warping Images\' num2str(i) '.pgm to ' num2str(warp_index)]);
     
-    size(pDB(i+1, 1, :))
     Ox = reshape(pDB(i+1, 1, :),1,points_count);
     Oy = reshape(pDB(i+1, 2, :),1,points_count);
     realImage = imread(['Images\' num2str(i) '.pgm'], 'pgm');
