@@ -10,9 +10,10 @@ for i = 1 : overlap : h
         
         a = getIndex(i, j, mask, base, eyes, nose, mouth);
         index = a(1);
-%         a = [a(2:size(a,2)), a(1)];
         base = [base(2:size(base,2)), base(1)];
         eyes = [eyes(2:size(eyes,2)), eyes(1)];
+        nose = [nose(2:size(nose,2)), nose(1)];
+        mouth = [mouth(2:size(mouth,2)), mouth(1)];
 
         for x = i : (i+patch)
             for y = j : (j+patch)
@@ -23,10 +24,17 @@ for i = 1 : overlap : h
                     if mask(x,y) == 0
                         Out(x,y) = (Out(x,y) + db(base(1),x,y)) / 2;
                     else
-                        Out(x,y) = ( (Out(x,y) * (1-mask(x,y))) + (db(eyes(1),x,y) * (mask(x,y))));
+                        factor = mask(x,y) - floor(mask(x,y));
+                        Out(x,y) = ( (Out(x,y) * (1-factor)) + (db(index(1),x,y) * (factor)));
                     end
                 else
-                    Out(x,y) = db(index,x,y);
+                    if mask(x,y) == 0
+                        Out(x,y) = db(index,x,y);
+                    else
+                        factor = mask(x,y) - floor(mask(x,y));
+                        Out(x,y) = ( (db(base(1),x,y) * (1-factor)) + (db(index(1),x,y) * (factor)));
+                    end
+                    
                 end
             end
         end
@@ -38,18 +46,15 @@ IMAGE = Out;
 
 function [index] = getIndex(x, y, mask, base, eyes, nose, mouth)
 
-% rnd = randi(100, 1);
-% if rnd > (mask(x,y) * 100)
-if (mask(x,y) == 0)
-    index = base;
-else
+if (mask(x,y) > 2)
+    index = mouth;
+elseif mask(x,y) > 1 
+    index = nose;
+elseif mask(x,y) > 0 
     index = eyes;
+else 
+    index = base;
 end
-
-function [pixel] = getPixel(db, x, y, mask, base, eyes)
-
-
-pixel = (1-mask(x,y))
 
 % pick(unique([1,1,2,3,4]), 3, 'o')
 % int8(rand([1,5]) * 4) + 1

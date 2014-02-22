@@ -17,5 +17,10 @@ x = mouth_points(1, :);
 y = mouth_points(2, :);
 blur4 = blur(poly2mask(x,y,h,w), blurFactor);
 
+idx = find(blur3 > 0);
+blur3(idx) = blur3(idx)+1;
+idx = find(blur4 > 0);
+blur4(idx) = blur4(idx)+2;
+
 MASK = (blur1)+(blur2)+(blur3)+(blur4);
 

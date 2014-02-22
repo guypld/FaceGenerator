@@ -16,11 +16,26 @@ x3 = x(17:27);
 y3 = y(17:27);
 x4 = [x(28), x(33), x(39), x(31), x(37), x(35), x(29), x(34), x(36), x(30), x(38), x(32)];
 y4 = [y(28), y(33), y(39), y(31), y(37), y(35), y(29), y(34), y(36), y(30), y(38), y(32)];
-% mask = FcreateMask(192, 168, [x1 ; y1], [x2 ; y2], [x3 ; y3], [x4 ; y4], 0.1);
-% showImage(mask*255);
+mask = FcreateMask(192, 168, [x1 ; y1], [x2 ; y2], [x3 ; y3], [x4 ; y4], 0.1);
+showImage(mask*255);
 % function [IMAGE] = FgenImage(db, mask, patch, overlap, base, eyes, nose, mouth)
-image = FgenImage(DB, mask, 5, 2, [1], [6], [1], [1]);
-showImage(image);
-image = FgenImage(DB, mask, 6, 2, [1], [1], [1], [1]);
+image = FgenImage(DB, mask, 4, 1, [1,2,3,4], [5,6,7,8], [1], [1]);
 % showImage(image);
+
+for i = 1:25
+    p = randperm(10);
+    base = p(1:3)
+    p = randperm(10);
+    eyes = p(1:4)
+    p = randperm(10);
+    nose = p(1:5)
+    p = randperm(10);
+    mouth = p(1:3)
+    out = FgenImage(DB, mask, 3, 1, base, eyes, nose, mouth); 
+    out = filter2(fspecial('average',2),out);
+    out = filter2(fspecial('average',2),out);
+    showImage(out);
+end
+
+
 
