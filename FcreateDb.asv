@@ -1,0 +1,21 @@
+% Create DB 
+function [DB] = FcreateDb(points_count, warp_index, )
+
+
+IMAGE_DB1 = zeros(5, 192, 168);
+
+PointCount = 39;
+
+POINT_DB = zeros(5, 2, PointCount);   % 71 point number
+
+% create DB
+for i = 0:4
+    disp(['Images\' num2str(i) '.pgm']);
+    A = imread(['Images\' num2str(i) '.pgm'], 'pgm');
+    IMAGE_DB(i+1, :, :) = A;
+    
+    load(['Points\' num2str(i) '.mat'],'Ox','Oy');
+
+    POINT_DB(i+1, 1, :) = Ox';
+    POINT_DB(i+1, 2, :) = Oy';
+end

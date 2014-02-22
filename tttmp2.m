@@ -31,8 +31,8 @@ baseFace = 3;
 
 tmp = reshape(IMAGE_DB(baseFace, :, :),192,168);
 
-el = 8;
-er = 8;
+el = 1;
+er = 2;
 nos = 18;
 mth = 8;
 
