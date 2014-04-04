@@ -42,6 +42,9 @@ for i = 1 : overlap : h
     end
 end
 
+Out = filter2(fspecial('average',3),Out);
+Out = filter2(fspecial('average',3),Out);
+
 IMAGE = Out;
 
 function [index] = getIndex(x, y, mask, base, eyes, nose, mouth)

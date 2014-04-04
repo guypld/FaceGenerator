@@ -1,0 +1,11 @@
+points_count 39
+warp_index 1
+hieght 192
+width 168
+prcnt 50
+realBtn 0
+
+picCount 10
+picPerFeature 3
+
+useFullRandom 0

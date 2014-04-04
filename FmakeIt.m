@@ -12,7 +12,5 @@ for i = 1:out_count
     p = randperm(in_count);
     mouth = p(1:m)
     out = FgenImage(db, mask, 3, 1, base, eyes, nose, mouth); 
-    out = filter2(fspecial('average',2),out);
-    out = filter2(fspecial('average',2),out);
     showImage(out);
 end

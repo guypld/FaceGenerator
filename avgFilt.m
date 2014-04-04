@@ -1,10 +1,14 @@
-function    nim = medianFilt(im,winSize)
-% function    nim = medianFilt(im,winSize)
+% IP HW 3
+% Students: Ron Yanovich 038059747 , Guy Peled 029992930
+%
+% 2)    function    nim = medianFilt(im,winSize)
 %
 %      Input:       im - a grayscale image (values in [0,255])
 %                        winSize - a 1x2 vector describing the size (height,width) of the filtering window.
 %        Output:     nim - a grayscale image (values in [0,255]) which is the median filtered im.
 %                        Image nim is of the same size as im. 
+function    nim = avgFilt(im,winSize)
+
     nim = zeros(size(im));  %create the nim img matrix for use
 
     imgH = size(im,1);
@@ -22,24 +26,22 @@ function    nim = medianFilt(im,winSize)
     %   NW  N   NE
     %   W   im   E
     %   SW  S   SE
-%     
-%     N = flipdim( im , 1);   %generate all 8 imgs
-%     S = N;
-%     E = flipdim( im , 2);
-%     W = E;
-%     SE = rot90(flipdim( im , 1 ));
-%     NW = SE;
-%     SW = rot90(flipdim( im , 2 ));
-%     NE = SW;
     
-%     R1 = cat (2,NW,N,NE);   % cat all images to big image, first make 3 rows (each row-3 imgs)
-%     R2 = cat (2,W,im,E);
-%     R3 = cat (2, SW,S,SE);
-
-    R1 = cat ( 2 , im , im , im);
+    N = flipdim( im , 1);   %generate all 8 imgs
+    S = N;
+    E = flipdim( im , 2);
+    W = E;
+    SE = rot90(flipdim( im , 1 ));
+    NW = SE;
+    SW = rot90(flipdim( im , 2 ));
+    NE = SW;
     
-    CycImg = cat(1,R1,R1,R1); %big image is cat of all 3 rows - 9 images
+    R1 = cat (2,NW,N,NE);   % cat all images to big image, first make 3 rows (each row-3 imgs)
+    R2 = cat (2,W,im,E);
+    R3 = cat (2, SW,S,SE);
 
+    CycImg = cat(1,R1,R2,R3); %big image is cat of all 3 rows - 9 images
+    
     %Sanity check :
     %   putImage(CycImg);
    

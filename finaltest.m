@@ -16,17 +16,18 @@ width = 168;
 
 
 % function [MASK] = FcreateMask(h, w, left_eye_points, right_eye_points, nose_points, mouth_points, blurFactor)
-mask1 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
-mask2 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
-mask3 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
-mask4 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
-mask5 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
-mask6 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
-mask7 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
-mask8 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
-mask9 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
-mask10 = FcreateMask(hieght, width, pDB, warp_index, points_count, 0.1);
+mask1 = FcreateMask(hieght, width, pDB1, warp_index, points_count, 0.1);
+mask2 = FcreateMask(hieght, width, pDB2, warp_index, points_count, 0.1);
+mask3 = FcreateMask(hieght, width, pDB3, warp_index, points_count, 0.1);
+mask4 = FcreateMask(hieght, width, pDB4, warp_index, points_count, 0.1);
+mask5 = FcreateMask(hieght, width, pDB5, warp_index, points_count, 0.1);
+mask6 = FcreateMask(hieght, width, pDB6, warp_index, points_count, 0.1);
+mask7 = FcreateMask(hieght, width, pDB7, warp_index, points_count, 0.1);
+mask8 = FcreateMask(hieght, width, pDB8, warp_index, points_count, 0.1);
+mask9 = FcreateMask(hieght, width, pDB9, warp_index, points_count, 0.1);
+mask10 = FcreateMask(hieght, width, pDB10, warp_index, points_count, 0.1);
 
+break
 % function FmakeIt(db, mask, out_count, b, e, n, m)
 out_count = 3;
 b = 3;
